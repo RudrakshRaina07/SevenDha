@@ -1,6 +1,6 @@
-const router  = require("express").router();
+const router  = require("express").Router();
 const {userVerification} = require("../Middlewares/AuthMiddlewares");
-const {getAllOrders, newOrder, getAllPositions, newOrder} = require("../Controllers/OrdersController");
+const {getAllOrders, newOrder, getAllPositions} = require("../Controllers/OrdersController");
 
 router.get("/allOrders",  userVerification, getAllOrders);
 router.post("/newOrder", userVerification, newOrder);

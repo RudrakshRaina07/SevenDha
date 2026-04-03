@@ -6,7 +6,7 @@ module.exports.getAllHoldings = async(req, res) => {
         let allHoldings = await HoldingsModel.find({});
         res.json(allHoldings);
     }catch(err){
-        console.error(error);
+        console.error(err);
         res.status(500).json({message: "Error fetching holdings"});
     }
 };
