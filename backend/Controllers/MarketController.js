@@ -23,7 +23,6 @@ module.exports.getPrices = async(req, res) => {
                 },
             });
 
-            console.log("INFY live price:", data.price);
             prices["INFY:NSE"] = { price: data.price ? parseFloat(data.price) : null };
         }
     
