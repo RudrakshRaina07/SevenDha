@@ -857,3 +857,28 @@ hr {
 .action:hover {
   background-color: rgb(212, 212, 212);
 }
+
+.profile-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.logout-btn {
+  margin: 0;
+  padding: 8px 16px;
+  cursor: pointer;
+  color: red;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  background-color: #fff0f0;
+  border-radius: 4px;
+}

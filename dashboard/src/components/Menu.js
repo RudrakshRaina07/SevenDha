@@ -1,9 +1,24 @@
 import React, {useState} from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from "axios";
+import "../index.css";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3002/getUser", {withCredentials : true})
+      .then((res) =>{
+        setUsername(res.data.user.username);
+      })
+      .catch((err) => {
+        console.error("Error fetching user:", err);
+      });
+  }, []);
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
@@ -13,12 +28,21 @@ const Menu = () => {
     setIsProfileDropdownOpen(!isProfileDropdownOpen);
   }
 
+  const handleLogout = async() =>{
+    try{
+      await axios.post("http://localhost:3002/logout",{}, {withCredentials : true});
+      window.location.href = "http://localhost:3000";
+    }catch(err){
+      console.error("Logout failed:", err);
+    }
+  }
+
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
 
   return ( 
     <div className='menu-container'>
-      <img src='logo.png' style={{width : "50px"}}/>
+      <img src='logo.png' alt='logo' style={{width : "50px"}}/>
       <div className='menus'>
         <ul>
           <li>
@@ -53,8 +77,16 @@ const Menu = () => {
           </li>
         </ul>
         <div className='profile' onClick={handleProfileClick}> 
-              <div className='avatar'>ZU</div>
-              <p className='username'>USERID</p>
+              <div className='avatar'>
+                {username ? username.slice(0,2).toUpperCase() : "ZU"}
+              </div>
+              <p className='username'>{username || "USERID"}</p>
+
+              {isProfileDropdownOpen && (
+                <div className='profile-dropdown'>
+                  <p className='logout-btn' onClick={handleLogout}>Logout</p>
+                </div>
+              )}
         </div>
       </div>
     </div>

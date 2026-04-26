@@ -76,3 +76,20 @@ module.exports.getUser = async(req, res) => {
         res.status(500).json({message : "Error fetching user"});
     }
 }
+
+module.exports.Logout = async(req, res) => {
+    try{
+        res.cookie("token", "", {
+            httpOnly : true,
+            sameSite: "lax",
+            secure: false,
+            expires: new Date(0),
+            path: "/"
+        });
+
+        res.status(200).json({message :"Logged out successfully", success: true});
+    }catch(err){
+        console.error(err);
+        res.status(500).json({message: "Logout Failed"});
+    }
+}
