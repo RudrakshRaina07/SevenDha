@@ -25,37 +25,10 @@ code {
   text-decoration: none;
 }
 
-/* *, */
-/* ::before,
-::after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-} */
-
 label {
   font-size: 1.2rem;
   color: #656262;
 }
-
-/* html,
-body {
-  height: 100%;
-  width: 100%;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(143, 187, 204, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
-  );
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-} */
 
 .form_container {
   background-color: #fff;
@@ -153,5 +126,141 @@ span a {
   .home_page button {
     padding: 0.6rem 1rem;
     font-size: 1.5rem;
+  }
+}
+
+/* 
+   RESPONSIVE STYLES — FRONTEND
+*/
+
+/* Small Laptop */
+@media only screen and (max-width: 1024px) {
+  .form_container {
+    max-width: 350px;
+    padding: 1.5rem 2rem;
+  }
+
+  .home_page {
+    font-size: 2rem;
+  }
+
+  .home_page button {
+    padding: 0.8rem 2rem;
+    font-size: 1.5rem;
+  }
+}
+
+/* Tablet */
+@media only screen and (max-width: 768px) {
+  /* Navbar */
+  .nav-link {
+    margin-left: 15px;
+  }
+
+  /* Home page */
+  .home_page {
+    font-size: 1.5rem;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .home_page button {
+    padding: 0.6rem 1.5rem;
+    font-size: 1.2rem;
+  }
+
+  /* Form */
+  .form_container {
+    max-width: 100%;
+    padding: 1.5rem;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  /* Footer */
+  .footer-links {
+    line-height: 2;
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 480px) {
+  /* Navbar */
+  .nav-link {
+    margin-left: 8px;
+    font-size: 0.85rem;
+  }
+
+  /* Home page */
+  .home_page {
+    font-size: 1.2rem;
+    padding: 16px;
+    text-align: center;
+    gap: 0.6rem;
+  }
+
+  .home_page button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+  }
+
+  /* Form container — login/signup */
+  .form_container {
+    width: 90%;
+    max-width: 100%;
+    padding: 1.2rem;
+    box-shadow: 4px 4px 12px 0px rgba(66, 68, 90, 0.5);
+    border-radius: 0.5rem;
+  }
+
+  .form_container > h2 {
+    font-size: 1.3rem;
+    margin-block: 0.5rem;
+  }
+
+  .form_container > form {
+    gap: 1rem;
+  }
+
+  .form_container input {
+    font-size: 1rem;
+    padding: 0.4rem;
+  }
+
+  .form_container button {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+
+  /* Footer */
+  .footer-links {
+    line-height: 2;
+    font-size: 0.8rem;
+  }
+}
+
+.auth_page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+@media only screen and (max-width: 480px) {
+  .auth_page {
+    padding: 10px;
+    align-items: flex-start;
+    padding-top: 30px;
+  }
+
+  .form_container {
+    width: 100%;
   }
 }

@@ -3,20 +3,20 @@ import React from 'react';
 function Pricing() {
     return ( 
         <div className='container mb-5'>
-            <div className='row'>
-                <div className='col-4'>
+            <div className='row align-items-center'>
+                <div className='col-12 col-md-4 mb-4 mb-md-0'>
                     <h1 className='mb-5 fs-2'>Unbeatable pricing</h1>
                     <p className='text-muted'>We pioneered the concept of discount broking and price transparency in India. Flat fees and no hidden charges.</p>
-                    <a href='' style={{textDecoration: "none"}}>See Pricing <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                    <a href='' style={{textDecoration: "none"}}>See Pricing <i className="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                 </div>
-                <div className='col-2'></div>
-                <div className='col-6'>
+                <div className='col-0 col-md-2'></div>
+                <div className='col-12 col-md-6'>
                     <div className='row text-center'>
-                        <div className='col border p-3'>
+                        <div className='col-6 border p-3'>
                             <h1 className='mb-4'>&#8377;0</h1>
                             <p>Free equity delivery and<br/>direct mutual funds</p>
                         </div>
-                        <div className='col border p-3'>
+                        <div className='col-6 border p-3'>
                             <h1 className='mb-4'>&#8377;20</h1>
                             <p>Intraday and F&O</p>
                         </div>
