@@ -15,8 +15,8 @@ module.exports.Signup = async(req, res) => {
         const user = await User.create({email, password, username, createdAt});
         const token = createSecretToken(user._id);
         res.cookie("token", token, {
-            secure: false,
-            sameSite: "lax",
+            secure: process.env.NODE_ENV === "production",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
             httpOnly: true,
             path: "/"
         });
@@ -52,9 +52,9 @@ module.exports.Login = async(req, res) => {
 
         const token = createSecretToken(user._id);
         res.cookie("token", token, {
-            sameSite: "lax",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
             httpOnly: true,
-            secure: false,
+            secure: process.env.NODE_ENV === "production",
             path: "/"
         });
         res.status(200).json({message : "User logged in successfully", success: true});
@@ -81,8 +81,8 @@ module.exports.Logout = async(req, res) => {
     try{
         res.cookie("token", "", {
             httpOnly : true,
-            sameSite: "lax",
-            secure: false,
+            sameSite: process.env.NODE_ENV === "produciton" ? "none" : "lax",
+            secure: process.env.NODE_ENV === "production",
             expires: new Date(0),
             path: "/"
         });
