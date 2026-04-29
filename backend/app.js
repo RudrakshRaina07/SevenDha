@@ -7,7 +7,6 @@ const authRoute = require("./Routes/AuthRoute");
 const marketRoute = require("./Routes/MarketRoute");
 const holdingsRoute = require("./Routes/HoldingsRoute");
 const ordersRoute = require("./Routes/OrdersRoute");
-const { useCallback } = require("react");
 
 const app = express();
 
