@@ -23,7 +23,7 @@ function ProductPage() {
         imageUrl="media/console.png"
         productName={"Console"}
         productDesp={
-          "The central dashboard for your Zerodha account. Gain insights into your trades and investments with in-depth reports and visualisations. "       
+          "The central dashboard for your Sevendha account. Gain insights into your trades and investments with in-depth reports and visualisations. "       
         }
         tryDemo={""}
         learnMore={""}

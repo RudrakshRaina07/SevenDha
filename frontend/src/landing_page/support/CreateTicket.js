@@ -22,7 +22,7 @@ function CreateTicket() {
           <div className="dropdown mb-5">
             <a className="btn border btn-lg dropdown-toggle w-100 d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i className="fa-solid fa-user"></i>
-              <span className="mx-auto">Your Zerodha Account</span>
+              <span className="mx-auto">Your Sevendha Account</span>
             </a>
             <ul className="dropdown-menu w-100">
               <li><a className="dropdown-item text-primary" href="#">Your Profile</a></li>

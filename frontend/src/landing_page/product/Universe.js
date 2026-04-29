@@ -7,14 +7,14 @@ function Universe() {
         <div className="text-center">
           <p className="fs-5 mt-5 mb-5">
             Want to know more about our technology stack? Check out the{" "}
-            <a href="#" className="remove-underline">Zerodha.tech</a>{" "}blog.
+            <a href="#" className="remove-underline">Sevendha.tech</a>{" "}blog.
           </p>
-          <h1 className="mt-5 mb-5 fs-2">The Zerodha Universe</h1>
+          <h1 className="mt-5 mb-5 fs-2">The Sevendha Universe</h1>
           <p>Extend your trading and investment experience even further with our partner platforms</p>
         </div>
 
         <div className="col-12 col-sm-6 col-md-4 p-3 mt-5 text-center">
-          <img src="media/zerodhaFundhouse.png" className="img-fluid mb-3" style={{width:"50%"}}/>
+          <img src="media/SevendhaFundhouse.png" className="img-fluid mb-3" style={{width:"50%"}}/>
           <p className="text-muted" style={{fontSize:"14px"}}>Our asset management venture that is creating simple and transparent index funds to help you save for your goals.</p>
         </div>
         <div className="col-12 col-sm-6 col-md-4 p-3 mt-5 text-center">
