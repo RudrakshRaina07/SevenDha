@@ -3,12 +3,14 @@ import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
 const Summary = () => {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
     axios 
-      .get("http://localhost:3002/getUser", {withCredentials : true})
+      .get(`${BASE_URL}/getUser`, {withCredentials : true})
       .then((res) => {
         setUsername(res.data.user.username);
       })

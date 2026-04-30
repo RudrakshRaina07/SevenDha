@@ -5,6 +5,8 @@ import axios from 'axios';
 
 axios.defaults.withCredentials = true;
 
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
 
 const GeneralContext = React.createContext({
     openBuyWindow: (uid) => {},
@@ -20,14 +22,14 @@ export const GeneralContextProvider = (props) => {
     const [priceLoading, setPriceLoading] = useState(false);
 
     const fetchHoldings = async() =>{
-        const res = await axios.get("http://localhost:3002/allHoldings", 
+        const res = await axios.get(`${BASE_URL}/allHoldings`, 
             { withCredentials: true }
         );
         setHoldings(res.data);
     };
 
     const fetchOrders = async() => {
-        const res = await axios.get("http://localhost:3002/allOrders",
+        const res = await axios.get(`${BASE_URL}/allOrders`,
             { withCredentials: true }
         );
         setOrders(res.data);
@@ -41,11 +43,10 @@ export const GeneralContextProvider = (props) => {
             const symbols = holdings.map(stock => stock.name);
 
             const res = await axios.post(
-                "http://localhost:3002/market/prices",
+                `${BASE_URL}/market/prices`,
                 {symbols},
                 {withCredentials: true}
             );
-            console.log("BATCH RESPONSE:", res.data);
             const updated = holdings.map(stock => ({
                 ...stock,
                 price: parseFloat(res.data[`${stock.name}:NSE`]?.price) || stock.price
@@ -91,11 +92,11 @@ export const GeneralContextProvider = (props) => {
     };
 
     const buyStock = async({name, qty, price}) => {;
-        await axios.post("http://localhost:3002/buy", {name, qty, price}, 
+        await axios.post(`${BASE_URL}/buy`, {name, qty, price}, 
             { withCredentials: true }
         );
 
-        await axios.post("http://localhost:3002/newOrder", {
+        await axios.post(`${BASE_URL}/newOrder`, {
             name,
             qty,
             price,
@@ -109,7 +110,7 @@ export const GeneralContextProvider = (props) => {
     };
 
     const sellStock = async({name, qty, price}) => {
-        await axios.post("http://localhost:3002/sell",{
+        await axios.post(`${BASE_URL}/sell`,{
             name,
             qty,
             price,

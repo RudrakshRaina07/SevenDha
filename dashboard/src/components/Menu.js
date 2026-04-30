@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import axios from "axios";
 import "../index.css";
 
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
@@ -11,7 +13,7 @@ const Menu = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/getUser", {withCredentials : true})
+      .get(`${BASE_URL}/getUser`, {withCredentials : true})
       .then((res) =>{
         setUsername(res.data.user.username);
       })
@@ -30,8 +32,8 @@ const Menu = () => {
 
   const handleLogout = async() =>{
     try{
-      await axios.post("http://localhost:3002/logout",{}, {withCredentials : true});
-      window.location.href = "http://localhost:3000";
+      await axios.post(`${BASE_URL}/logout`,{}, {withCredentials : true});
+      window.location.href = process.env.REACT_APP_FRONTEND_URL || "http://localhost:3000";
     }catch(err){
       console.error("Logout failed:", err);
     }
