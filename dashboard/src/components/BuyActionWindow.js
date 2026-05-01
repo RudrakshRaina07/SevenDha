@@ -3,8 +3,6 @@ import React, {useState} from 'react';
 import GeneralContext from "./GeneralContext";
 import { useContext } from "react";
 
-import axios from "axios";
-
 import "./BuyActionWindow.css";
 
 const BuyActionWindow = ({ uid }) => {
@@ -17,7 +15,6 @@ const BuyActionWindow = ({ uid }) => {
         context.closeBuyWindow();
     };
     const handleBuyClick = async () => {
-        // context.openBuyWindow(uid);
         try {
         await context.buyStock({
             name: uid,

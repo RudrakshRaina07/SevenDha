@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import { positions } from "../data/data";
 import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
