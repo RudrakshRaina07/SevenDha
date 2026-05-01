@@ -17,6 +17,9 @@ const allowedOrigins = [
     process.env.DASHBOARD_URL,
 ];
 
+console.log("Allowed Origins:", allowedOrigins);
+console.log("NODE_ENV:", process.env.NODE_ENV);
+
 app.use(cors({
     origin: function(origin, callback){
         if(!origin || allowedOrigins.includes(origin)){
