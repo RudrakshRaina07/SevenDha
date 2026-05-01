@@ -72,6 +72,7 @@ export const GeneralContextProvider = (props) => {
         const interval = setInterval(updatedPrice, 60000);
 
         return () => clearInterval(interval);
+        
     },[holdings.length]);
 
     const handleOpenBuyWindow = (uid) => {
