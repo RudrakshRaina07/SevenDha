@@ -49,7 +49,7 @@ const Login = () => {
             if(success){
                 handleSuccess(message);
                 setTimeout(() => {
-                    window.location.href = process.env.REACT_APP_DASHBOARD_URL;
+                    window.location.href = "https://sevendha-dashboard.vercel.app";
                 }, 1000);
             }else{
                 handleError(message);
