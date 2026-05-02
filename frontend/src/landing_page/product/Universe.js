@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Universe() {
+  const navigate = useNavigate();
   return (
     <div className="container">
       <div className="row">
@@ -39,7 +41,7 @@ function Universe() {
         </div>
 
         <div className="text-center mt-5 mb-5">
-          <button className='p-2 btn btn-primary fs-5 px-4' style={{minWidth:"180px"}}>Signup now</button>
+          <button className='p-2 btn btn-primary fs-5 px-4' style={{minWidth:"180px"}} onClick={() => navigate('/signup')} >Signup now</button>
         </div>
       </div>
     </div>
