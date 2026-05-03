@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import SellActionWindow from './SellActionWindow';
 import BuyActionWindow from './BuyActionWindow';
 import axios from 'axios';
@@ -21,6 +21,12 @@ export const GeneralContextProvider = (props) => {
     const [mode, setMode] = useState(null);
     const [priceLoading, setPriceLoading] = useState(false);
 
+    const holdingsRef = useRef(holdings);
+
+    useEffect(() => {
+        holdingsRef.current = holdings;
+    },[holdings]);
+
     const fetchHoldings = async() =>{
         const res = await axios.get(`${BASE_URL}/allHoldings`, 
             { withCredentials: true }
@@ -35,19 +41,21 @@ export const GeneralContextProvider = (props) => {
         setOrders(res.data);
     };
 
-    const updatedPrice = async() => {
+    const updatedPrice = useCallback(async() => {
         console.log("Running price update");
         setPriceLoading(true);
         
         try{
-            const symbols = holdings.map(stock => stock.name);
+            const currentHoldings = holdingsRef.current;
+
+            const symbols = currentHoldings.map(stock => stock.name);
 
             const res = await axios.post(
                 `${BASE_URL}/market/prices`,
                 {symbols},
                 {withCredentials: true}
             );
-            const updated = holdings.map(stock => ({
+            const updated = currentHoldings.map(stock => ({
                 ...stock,
                 price: parseFloat(res.data[`${stock.name}:NSE`]?.price) || stock.price
             }))
@@ -58,7 +66,7 @@ export const GeneralContextProvider = (props) => {
         }finally{
             setPriceLoading(false);
         }
-    }
+    }, []);
 
     useEffect(() => {
         fetchHoldings();
@@ -73,7 +81,7 @@ export const GeneralContextProvider = (props) => {
 
         return () => clearInterval(interval);
         
-    },[holdings.length]);
+    },[holdings.length, updatedPrice]);
 
     const handleOpenBuyWindow = (uid) => {
         setMode("BUY")
