@@ -7,7 +7,7 @@ function Footer() {
             <div className='row mt-5'>
                     <div className='col'>
                         <div>
-                            <img src='media/logo.svg' style={{width : "50%"}}/>
+                            <img src='media/sevendha_logo.svg' style={{width : "50%"}}/>
                             <p className='mt-3'>&copy; 10 - 2025, Sevendha Broking Ltd.</p>
                             <p>All rights reserved.</p>
                         </div>
